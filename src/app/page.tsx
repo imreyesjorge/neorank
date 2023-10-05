@@ -46,8 +46,8 @@ export default async function HomeScreen() {
 
   return (
     <main className="text-neutral-400 p-4 bg-neutral-900 transition">
-      <div className="mb-8">
-        <h1 className="text-white text-lg font-bold">Neorank</h1>
+      <div className="max-w-[1024px] mx-auto mb-8">
+        <h1 className="text-white text-lg font-bold">Neorank (Top Stories)</h1>
         <p className="text-sm">
           A sleek and minimal version of{" "}
           <a className="underline" href="https://news.ycombinator.com/">
@@ -55,7 +55,7 @@ export default async function HomeScreen() {
           </a>{" "}
           made with love by{" "}
           <a className="underline" href="https://reyes.cool">
-            Reyes
+            Jorge Reyes
           </a>
           .
         </p>
