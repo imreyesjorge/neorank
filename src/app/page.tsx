@@ -35,7 +35,6 @@ export default async function HomeScreen({ searchParams }) {
 
       return response;
     } catch (error) {
-      // Do something
       return [];
     }
   };
@@ -60,55 +59,63 @@ export default async function HomeScreen({ searchParams }) {
 
   return (
     <main className="text-neutral-400 min-h-screen p-4 bg-neutral-900 transition">
-      <div className="max-w-[1024px] mx-auto mb-8">
-        <h1 className="text-white text-lg font-bold">
-          Neorank ({Category[category] || "Unknown"})
-        </h1>
-        <p className="text-sm">
-          A sleek and minimal version of{" "}
-          <a className="underline" href="https://news.ycombinator.com/">
-            Hacker News
-          </a>{" "}
-          made with love by{" "}
-          <a className="underline" href="https://reyes.cool">
-            Jorge Reyes
-          </a>
-          .
-        </p>
-      </div>
-      <nav className="mb-8">
-        <ul className="flex gap-4">
-          <li>
-            <Link className="underline" href="/?category=topstories">Top</Link>
-          </li>
-          <li>
-            <Link className="underline" href="/?category=beststories">Best</Link>
-          </li>
-          <li>
-            <Link className="underline" href="/?category=newstories">New</Link>
-          </li>
-        </ul>
-      </nav>
-      <ul className="max-w-[1024px] mx-auto flex flex-col gap-8">
-        {stories.map((story, index) => (
-          <li>
-            <a
-              className="hover:text-white w-full font-medium block p-3 border border-neutral-800 rounded-lg hover:shadow-lg transition relative"
-              href={story.url}
-            >
-              <div className="text-xs w-6 h-6 bg-neutral-800 rounded-full flex justify-center items-center absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2">
-                {index + 1}
-              </div>
-              <p>{story.title}</p>
-              <div className="text-xs font-light flex justify-between">
-                <small>{story.score} points</small>
-                <small>by {story.by}</small>
-              </div>
+      <div className="max-w-[1024px] mx-auto">
+        <div className="mb-8">
+          <h1 className="text-white text-lg font-bold">
+            Neorank ({Category[category] || "Unknown"})
+          </h1>
+          <p className="text-sm">
+            A sleek and minimal version of{" "}
+            <a className="underline" href="https://news.ycombinator.com/">
+              Hacker News
+            </a>{" "}
+            made with love by{" "}
+            <a className="underline" href="https://reyes.cool">
+              Jorge Reyes
             </a>
-          </li>
-        ))}
-      </ul>
-      {!Category[category] && <p>We couldn’t find that category.</p>}
+            .
+          </p>
+        </div>
+        <nav className="mb-8">
+          <ul className="flex gap-4">
+            <li>
+              <Link className="underline" href="/?category=topstories">
+                Top
+              </Link>
+            </li>
+            <li>
+              <Link className="underline" href="/?category=beststories">
+                Best
+              </Link>
+            </li>
+            <li>
+              <Link className="underline" href="/?category=newstories">
+                New
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <ul className="flex flex-col gap-8">
+          {stories.map((story, index) => (
+            <li>
+              <a
+                className="hover:text-white w-full font-medium block p-3 border border-neutral-800 rounded-lg hover:shadow-lg transition relative"
+                href={story.url}
+              >
+                <div className="text-xs w-6 h-6 bg-neutral-800 rounded-full flex justify-center items-center absolute top-0 left-0 -translate-y-1/2 -translate-x-1/2">
+                  {index + 1}
+                </div>
+                <p>{story.title}</p>
+                <div className="text-xs font-light flex justify-between">
+                  <small>{story.score} points</small>
+                  <small>by {story.by}</small>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {!Category[category] && <p>We couldn’t find that category.</p>}
+      </div>
     </main>
   );
 }
