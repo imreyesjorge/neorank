@@ -79,17 +79,17 @@ export default async function HomeScreen({ searchParams }) {
         <nav className="mb-8">
           <ul className="flex gap-4">
             <li>
-              <Link className="underline" href="/?category=topstories">
+              <Link prefetch={false} className="underline" href="/?category=topstories">
                 Top
               </Link>
             </li>
             <li>
-              <Link className="underline" href="/?category=beststories">
+              <Link prefetch={false} className="underline" href="/?category=beststories">
                 Best
               </Link>
             </li>
             <li>
-              <Link className="underline" href="/?category=newstories">
+              <Link prefetch={false} className="underline" href="/?category=newstories">
                 New
               </Link>
             </li>
