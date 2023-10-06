@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface IStory {
   by: string;
   descendants: number;
@@ -18,13 +16,11 @@ enum Category {
   beststories = "Best Stories",
 }
 
-export default async function HomeScreen({ searchParams }) {
-  const category = searchParams.category || "topstories";
-
+export default async function HomeScreen() {
   const getTopStoriesIds = async (): Promise<number[]> => {
     try {
       const rawResponse = await fetch(
-        `https://hacker-news.firebaseio.com/v0/${category}.json`,
+        `https://hacker-news.firebaseio.com/v0/topstories.json`,
       );
 
       const response = await rawResponse.json();
@@ -62,7 +58,7 @@ export default async function HomeScreen({ searchParams }) {
       <div className="max-w-[1024px] mx-auto">
         <div className="mb-8">
           <h1 className="text-white text-lg font-bold">
-            Neorank ({Category[category] || "Unknown"})
+            Neorank (Top Stories)
           </h1>
           <p className="text-sm">
             A sleek and minimal version of{" "}
@@ -76,25 +72,6 @@ export default async function HomeScreen({ searchParams }) {
             .
           </p>
         </div>
-        <nav className="mb-8">
-          <ul className="flex gap-4">
-            <li>
-              <Link prefetch={false} className="underline" href="/?category=topstories">
-                Top
-              </Link>
-            </li>
-            <li>
-              <Link prefetch={false} className="underline" href="/?category=beststories">
-                Best
-              </Link>
-            </li>
-            <li>
-              <Link prefetch={false} className="underline" href="/?category=newstories">
-                New
-              </Link>
-            </li>
-          </ul>
-        </nav>
         <ul className="flex flex-col gap-8">
           {stories.map((story, index) => (
             <li>
@@ -114,7 +91,6 @@ export default async function HomeScreen({ searchParams }) {
             </li>
           ))}
         </ul>
-        {!Category[category] && <p>We couldn’t find that category.</p>}
       </div>
     </main>
   );
